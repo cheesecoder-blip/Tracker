@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>Personal Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">PERSONAL TRACKER</div>
+  </header>
+
+  <main class="app">
+    <section id="moneyPage" class="page active" aria-labelledby="moneyHeading">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">YOUR FINANCES</p>
+          <h1 id="moneyHeading">Money</h1>
+        </div>
+      </div>
+
+      <section class="balance-card" aria-label="Current balance">
+        <p class="balance-label">CURRENT BALANCE</p>
+        <p id="balanceAmount" class="balance-amount">₱0.00</p>
+        <button id="openLogForm" class="button button-light" type="button">+ Update Log</button>
+      </section>
+
+      <section id="logFormPanel" class="panel form-panel" hidden>
+        <div class="panel-heading">
+          <h2>New Update</h2>
+          <button id="closeLogForm" class="icon-button" type="button" aria-label="Close form">×</button>
+        </div>
+        <form id="logForm">
+          <label for="logAmount">Amount (PHP)</label>
+          <input id="logAmount" name="amount" type="number" step="0.01" placeholder="e.g. 100 or -100" required>
+          <label for="logDescription">Description</label>
+          <input id="logDescription" name="description" type="text" maxlength="120" placeholder="What was this transaction for?" required>
+          <p class="form-hint">Use a positive number for money gained and a negative number for money lost or spent.</p>
+          <button class="button button-dark full-width" type="submit">Save Update</button>
+        </form>
+      </section>
+
+      <section class="logs-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">TRANSACTION HISTORY</p>
+            <h2>Update Log</h2>
+          </div>
+        </div>
+        <div class="filter-row" role="group" aria-label="Filter transaction logs">
+          <button class="filter-button active" data-filter="all" type="button">All</button>
+          <button class="filter-button" data-filter="gain" type="button">Gain</button>
+          <button class="filter-button" data-filter="loss" type="button">Loss</button>
+        </div>
+        <div id="logList" class="log-list">
+          <div class="empty-state">No updates yet. Add your first money log.</div>
+        </div>
+      </section>
+    </section>
+
+    <section id="objectivesPage" class="page" aria-labelledby="objectivesHeading" hidden>
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">YOUR PROGRESS</p>
+          <h1 id="objectivesHeading">Objective Trackers</h1>
+        </div>
+        <button id="addTrackerButton" class="button button-dark" type="button">+ New Tracker</button>
+      </div>
+
+      <section id="trackerFormPanel" class="panel form-panel" hidden>
+        <div class="panel-heading">
+          <h2 id="trackerFormTitle">New Tracker</h2>
+          <button id="closeTrackerForm" class="icon-button" type="button" aria-label="Close form">×</button>
+        </div>
+        <form id="trackerForm">
+          <label for="trackerName">Tracker name</label>
+          <input id="trackerName" type="text" maxlength="60" placeholder="e.g. School Goals" required>
+          <button class="button button-dark full-width" type="submit">Save Tracker</button>
+        </form>
+      </section>
+
+      <div id="trackerList" class="tracker-list">
+        <div class="empty-state">No trackers yet. Create one to get started.</div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="nav-button active" data-page="moneyPage" type="button">
+      <span class="nav-indicator"></span>
+      <span>Money</span>
+    </button>
+    <button class="nav-button" data-page="objectivesPage" type="button">
+      <span class="nav-indicator"></span>
+      <span>Objective Trackers</span>
+    </button>
+  </nav>
+
+  <div id="objectiveModal" class="modal-backdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="objectiveModalTitle">
+      <div class="panel-heading">
+        <h2 id="objectiveModalTitle">New Objective</h2>
+        <button id="closeObjectiveModal" class="icon-button" type="button" aria-label="Close form">×</button>
+      </div>
+      <form id="objectiveForm">
+        <label for="objectiveName">Objective</label>
+        <input id="objectiveName" type="text" maxlength="100" placeholder="Objective name" required>
+        <label for="objectiveDescription">Description</label>
+        <textarea id="objectiveDescription" rows="3" maxlength="400" placeholder="Add details (optional)"></textarea>
+        <button class="button button-dark full-width" type="submit">Save Objective</button>
+      </form>
+    </section>
+  </div>
+
+  <div id="editObjectiveModal" class="modal-backdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="editObjectiveTitle">
+      <div class="panel-heading">
+        <h2 id="editObjectiveTitle">Edit Objective</h2>
+        <button id="closeEditObjectiveModal" class="icon-button" type="button" aria-label="Close form">×</button>
+      </div>
+      <form id="editObjectiveForm">
+        <label for="editObjectiveName">Objective</label>
+        <input id="editObjectiveName" type="text" maxlength="100" required>
+        <label for="editObjectiveDescription">Description</label>
+        <textarea id="editObjectiveDescription" rows="3" maxlength="400"></textarea>
+        <button class="button button-dark full-width" type="submit">Save Changes</button>
+      </form>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
