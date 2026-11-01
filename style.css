@@ -516,6 +516,17 @@ input:focus, textarea:focus {
     grid-template-columns: 20px minmax(0, 1fr);
   }
 
+  #negativeButton {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 18px;
+  border: 1px solid var(--gray-300);
+  border-radius: 10px;
+  justify-content: right; 
+}
+
   .objective-actions {
     grid-column: 2;
     justify-content: flex-start;
