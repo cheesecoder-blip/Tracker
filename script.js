@@ -423,6 +423,18 @@ trackerList.addEventListener("change", event => {
   });
 });
 
+let negativeButton = document.getElementById("negativeButton");
+negativeButton.addEventListener("click", () => {
+  let logAmountInput = document.getElementById("logAmount");
+  let currentValue = logAmountInput.value;
+
+  if (currentValue.startsWith("-")) {
+    logAmountInput.value = currentValue.slice(1);
+  } else {
+    logAmountInput.value = "-" + currentValue;
+  }
+});
+
 // Initial render
 renderMoney();
 renderTrackers();
